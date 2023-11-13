@@ -15,7 +15,7 @@ const [state,setState] = useState(초기값);
 ```state```은 현재의 상태값이 <br/>
 ```setState```는 값을 변경할 때 사용
 
-![Alt text](./img/image-7.png)
+![Alt text](../img/image-7.png)
 
 ### ex)
 
@@ -53,7 +53,7 @@ function App() {
 export default App;
 
 ```
-![Alt text](./img/image-6.png)
+![Alt text](../img/image-6.png)
 
 함수를 만들고, button 의 ```onClick``` 으로 각 함수를 연결해주었다 리액트에서 엘리먼트에 이벤트를 설정해줄때에는 ```on이벤트이름={실행하고싶은함수}``` 형태로 설정 해야한다
 여기서 주의 할 점은 함수 형태를 넣어야 한다
