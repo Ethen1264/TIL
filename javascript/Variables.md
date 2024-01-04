@@ -8,6 +8,20 @@ var num = 3;
 console.log(num);
 ```
 **var**는 이런식으로 사용하는데 언제 어디서나 값을 바꿀 수 있다는 장점도 있지만<br> 언어의 보호를 받지 못해 취약할 수 있기 때문에 권장하지 않는다.
+
+###  var의 문제점
+```js
+  var string1 = "hi";
+    var num = 1;
+
+    if (num === 1) {
+        var string1 = "hello"; 
+    }
+    
+    console.log(string1 )
+```
+**string1 === 1**가 **true** 이기 때문에 **string1 = hello**가 됩니다.만약 의도해서 이러한 if문이 동작되게 설정한 것이라면 문제가 없지만 그렇지 않다면 뜻 밖의 코드인 **hello**가 출력 될 것 입니다.
+
 ___
 ## const
 ``` javascript 
