@@ -1,4 +1,4 @@
-# [#10] Enum
+#
 
 ### 숫자 열거형
 
@@ -50,7 +50,6 @@ const TEST: Direction = Direction.TEST;
 console.log(TEST); // 8
 ```
 
-
 ### 문자열 열거형
 
 ```jsx
@@ -61,6 +60,7 @@ enum Direction {
   TEST4 = 'TEST4'
 }
 ```
+
 ```jsx
 const south: Direction = Direction.TEST3;
 console.log(TEST); // TEST3
@@ -69,7 +69,6 @@ console.log(TEST); // TEST3
 #### 주의점
 
 문자열 멤버 이후로 정의된 모든 멤버는 명시적으로 초기화되어야 한다.
-
 
 ### 계산된 멤버
 
@@ -86,7 +85,7 @@ enum SpecialNumbers {
 
 ### 유니온 열거형
 
-유니온 열거형의 멤버는 값인 동시에 타입이 된다. 
+유니온 열거형의 멤버는 값인 동시에 타입이 된다.
 
 ```jsx
 enum ShapeKind {
@@ -95,18 +94,19 @@ enum ShapeKind {
   Square
 }
 ```
+
 ```jsx
 type Circle = {
-  kind: ShapeKind.Circle;
-  radius: number;
-}
+  kind: ShapeKind.Circle,
+  radius: number,
+};
 type Triangle = {
-  kind: ShapeKind.Triangle;
-  maxAngle: number;
-}
+  kind: ShapeKind.Triangle,
+  maxAngle: number,
+};
 type Square = {
-  kind: ShapeKind.Square;
-  maxLength: number;
-}
+  kind: ShapeKind.Square,
+  maxLength: number,
+};
 type Shape = Circle | Triangle | Square;
 ```
