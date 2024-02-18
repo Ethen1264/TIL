@@ -154,9 +154,8 @@ instance.interceptors.request.use(async (config) => {
 - 여러 요청에 대해 공통된 작업을 수행해 중복 코드 제거
 - 요청과 응답에 대한 처리를 자유롭게 확장 가능
 
-
 ### interceptors의 주의점
 
-- interceptors 에 예외 처리하고 처리된 결과를 반환하는 것이 중요하다. 
+- interceptors 에 예외 처리하고 처리된 결과를 반환하는 것이 중요하다.
 - interceptors 에서 예외가 발생하면 해당 요청 또는 응답이 실패된다.
 - interceptors 설정시 순서에 따라서 요청과 응답 처리 순서가 달라질 수 있기 때문에 조심해야한다.
