@@ -112,12 +112,25 @@ export default function Page() {
 
 이런식으로 함수와 결합하여 사용할 수 있다.
 
+### 다이나믹 라우팅
+
+다이나믹 라우팅은 리액트의 params와 같은 역할을 한다.
+이러한 다이나믹 라우팅은 본인이 원하는 파일안에 스퀘어 브래킷([])으로 시작하는 폴더를 만들고 그 안에 page.tsx를 만들면 된다.
+
+예시로 product라는 폴더 안에 [Id]라는 폴더를 만들고 그 안에 page.tsx를 만든다. 그후 page.tsx에 아래와 같이 적용한다.
+
+```tsx
+export default function MovieDetail({ params: { id } }: { params: { id: string } }) {
+  return <h1>Movie{id}</h1>;
+}
+```
+이렇게 적용하면 화면에 Movie + 해당 페이지의 params Id를 합치게 된다.
+
 ### 404 페이지 만들기
 
 `app`폴더 아래에 `not-found.tsx`라는 파일을 만든 후 아래와 같이 사용하면 not-found 페이지를 만들 수 있다.
 
 ```tsx
-
 export default function NotFound() {
   return (
     <div>
