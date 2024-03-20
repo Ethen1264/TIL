@@ -1,4 +1,4 @@
-# v
+# Metadata
 
 ### Meta 데이터란?
 
@@ -41,7 +41,7 @@ export const metadata = {
 #### RootLayout
 
 ```jsx
-export const metadata = {
+export const metadata = { 
   title: {
     template: "%s | Next Movies",
     default: "Next Movies"
@@ -58,3 +58,6 @@ export const metadata = {
 ```
 
 이렇게 적용하면 `home`이라는 페이지에 들어갔을 때 이름이 `%s | Next Movies`가 아닌 `Home | Next Movies`으로 변경된다.
+
+### 주의점
+meta data는 `use client`로 동작할 시 상요할 수 없다.
