@@ -45,7 +45,7 @@ CSR(Client Side Rendering)은 클라이언트에서 렌더링 하는 방식이�
 
 ### CSR과 SSR의 장단점
 
-![alt text](./img/CSR&SSR.png.png)
+![alt text](./img/CSR&SSR.png)
 
 ### CSR 코드
 
