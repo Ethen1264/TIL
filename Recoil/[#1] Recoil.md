@@ -127,37 +127,49 @@ function TextInput() {
 
 ### selector
 
-#### atom
+- recoil에서의 함수 또는 파생된 상태
+- 파생된 상태란 atom의 상태에서 파생된 데이터, 즉 atom의 상태에 의존하는 동적인 데이터를 의미
+- 주어진 atom의 상태에 대해 항상 동일한 값을 반환하는 순수함수
 
 ```jsx
-const textState = atom({
-  key: 'textState',
-  default: '',
+import React from 'react';
+import { atom, selector, useRecoilState, useRecoilValue } from 'recoil';
+
+// atom
+const countState = atom({
+  key: 'countState',
+  default: 0,
 });
-```
 
-`selector`는 `state`를 `get`하여 다른 값으로 변환해 return 해줄 수 있다.
-
-```jsx
-const charCountState = selector({
-  key: 'charCountState',
+// selector
+const doubledCountState = selector({
+  key: 'doubledCountState',
   get: ({ get }) => {
-    const text = get(textState);
-
-    return text.length;
+    const count = get(countState);
+    return count * 2; // countState 값의 두 배를 반환
   },
 });
-```
 
-```jsx
-function CharacterCount() {
-	const count = useRecoilValue(charCountState);
-	return(
-		<>
-			<div> Character Count : {count} </div>
-		</>
-	);
+function Counter() {
+  const [count, setCount] = useRecoilState(countState);
+  const doubledCount = useRecoilValue(doubledCountState);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <div>
+      <h1>Counter</h1>
+      <p>Count: {count}</p>
+      <p>Doubled Count: {doubledCount}</p>
+      <button onClick={increment}>Increment</button>
+    </div>
+  );
 }
+
+export default Counter;
 ```
 
-즉 위에 결과는 selector가 없었다면 `textState`가 나와야 한다. 하지만 selector로 인해 값이 9로 변환되어 9가 출력된다.
+위 결과는 `Increment`를 누르면 `increment` 함수가 실행되어 count + 1을 해준다.
+그 후 `doubledCountState` selector가 실행된다. 이 `doubledCountState`는 가까 count + 1이 된 `countState`의 값을 가지고 와서 \*2를 해준 후 return 한다. 그 후 화면에 렌더링 된다.
