@@ -7,7 +7,7 @@
 
 ### Debounce
 
-![alt text](/img/Debounce.png)
+![alt text](./img/Debounce.png)
 
 > 디바운스는 연속적으로 발생하는 이밴트중 마지막으로 발생한 이밴트만 처리한다.
 
@@ -16,7 +16,7 @@
 
 ### Throttle
 
-![alt text](/img/Throttle.png)
+![alt text](./img/Throttle.png)
 
 > 마지막 함수가 호출된 후 일정 시간이 지나기 전에 다시 호출되지 않도록 하는 것
 
