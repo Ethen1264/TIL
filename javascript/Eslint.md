@@ -1,6 +1,4 @@
-# Eslint & Prettier
-
-### Eslint란?
+# Eslint란?
 
 EsLint는 Es와 Lint를 합친 용어이다.
 
