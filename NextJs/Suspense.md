@@ -43,6 +43,8 @@ export default async function MovieVideos({ id }: { id: string }) {
 ```
 
 ```tsx
+MovieDetail.tsx;
+
 export default async function MovieDetail({ params: { id } }: { params: { id: string } }) {
   return (
     <div>
@@ -57,4 +59,4 @@ export default async function MovieDetail({ params: { id } }: { params: { id: st
 }
 ```
 
-이렇게 서버와 통신하는 두 컴포넌트를
+이렇게 서버와 통신하는 두 컴포넌트를 임포트 하여 `Suspense`라는 컴포넌트로 각각 감싼다. 이때 `fallback`을 사용하여 통신이 끝나기 전까지의 상태를 출력할 수 있다. 또한 Suspense로 감쌀 시 기존 처럼 `MovieVideos`의 통신이 끝나고 `MovieInfo`의 통신이 끝날 때 까지 기다렸다가 화면에 두개를 같이 렌더링 하는 것이 아닌 각각 통신이 끝나자마자 화면에 랜더링 할 수 있다.
