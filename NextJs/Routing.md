@@ -110,7 +110,79 @@ export default function Page() {
 }
 ```
 
-이런식으로 함수와 결합하여 사용할 수 있다.
+이런식으로 함수와 결합하여 사용할 수 있다. 이떄 `router.push()`, `router.back()`, `router.forward()`,`router.refresh()`,`router.prefetch()` 이러한 여러 기능등이 있다.
+
+#### push
+
+버튼을 눌렀을 때 메인 페이지로 이동하게 해준다.
+
+```tsx
+<button
+  onClick={() => {
+    router.push('/');
+  }}
+>
+  버튼
+</button>
+```
+
+#### back
+
+페이지를 뒤로가게 해준다.
+
+```tsx
+<button
+  onClick={() => {
+    router.back();
+  }}
+>
+  버튼
+</button>
+```
+
+#### forward
+
+페이지를 앞으로가게 해준다.
+
+```tsx
+<button
+  onClick={() => {
+    router.forward();
+  }}
+>
+  버튼
+</button>
+```
+
+#### refresh
+
+패이지를 새로고침 해준다.
+
+```tsx
+<button
+  onClick={() => {
+    router.refresh();
+  }}
+>
+  버튼
+</button>;
+router.refresh();
+```
+
+#### prefetch
+
+실행하면 '/어쩌구'의 내용을 미리 로드하여 미리 상태를 캐싱한다.
+
+```tsx
+<button
+  onClick={() => {
+    router.prefetch('/어쩌구');
+  }}
+>
+  버튼
+</button>;
+router.prefetch('/');
+```
 
 ### 다이나믹 라우팅
 
@@ -124,6 +196,7 @@ export default function MovieDetail({ params: { id } }: { params: { id: string }
   return <h1>Movie{id}</h1>;
 }
 ```
+
 이렇게 적용하면 화면에 Movie + 해당 페이지의 params Id를 합치게 된다.
 
 ### 404 페이지 만들기
