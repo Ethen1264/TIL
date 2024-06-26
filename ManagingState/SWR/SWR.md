@@ -5,7 +5,7 @@
 캐시는 데이터를 일시적으로 저장하는 메모리를 가리키는 용어이다.
 한 번의 요청에 비용이 큰 경우, 여러 번 요청을 하는 것 보다, 한 번의 요청 이후 캐시에 저장하여 재사용 하기 위한 전략이다.
 
-![alt text](/img/cash.png)
+![alt text](../img/cash.png)
 
 ### SWR이란?
 
@@ -18,7 +18,7 @@ SWR은 우선적으로 캐시로 부터 데이터를 반환한 후, fetch 요청
 SWR 내부에는 Super Cache가 존재한다.
 이 객체의 key는 useSWR 훅의 첫 번째 인자로 받은 문자열이고, 이 key를 통해 cache를 만들어 메모리에 저장하고, 데이터를 찾는다.
 
-![alt text](/img/SWR.png)
+![alt text](../img/SWR.png)
 
 ### SWR 설치
 
