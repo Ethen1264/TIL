@@ -17,7 +17,7 @@
 
 - 초기 페이지 로드 속도 증가 및 클라이언트 측 자바스크립트 번들 크기 감소
 
-- 클라이언트 측 런타임을 비동기식으로 로드하여 애플리케이션을 인계하고 상호 작용을 추가할 수 있다. 
+- 클라이언트 측 런타임을 비동기식으로 로드하여 애플리케이션을 인계하고 상호 작용을 추가할 수 있다.
 
 ### 클라이언트 컴포넌트
 
@@ -25,12 +25,12 @@
 
 ```tsx
 'use client';
- 
+
 import { useState } from 'react';
- 
+
 export default function Counter() {
   const [count, setCount] = useState(0);
- 
+
   return (
     <div>
       <p>{count}</p>
@@ -47,5 +47,64 @@ export default function Counter() {
 #### 클라이언트 컴포넌트의 특징
 
 - 서버 컴포넌트 모듈 내부에 있는 컴포넌트들은 서버에서만 렌더링된다.
-- `use client` 지시문은  다른 것들을 import 하기전에  반드시 파일 제일 상단에 정의되어야 한다.
+- `use client` 지시문은 다른 것들을 import 하기전에 반드시 파일 제일 상단에 정의되어야 한다.
 
+### 서버 컴포넌트와 클라이언트 컴포넌트의 코드적 차이
+
+#### 클라이언트 컴포넌트
+
+```tsx
+"use client";
+
+import { useState, useEffect } from "react";
+
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+   const [ topics, setTopics ] = useState();
+
+   useEffect(() => {
+  	  const setPage = async () => {
+      const { data } = fetch(`http://localhost:9999/topics`);
+	  setTopics(data}
+    }
+
+    setPage();
+  },[])
+
+  return (
+    <html>
+      <body>
+        <ol>
+          {topics.map((topic: ITopics) => {
+            return (
+              <li key={topic.id}>
+                <Link href={`/read/${topic.id}`}>{topic.title}</Link>
+              </li>
+              ...
+```
+
+#### 서버 컴포넌트
+
+```tsx
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const resp = await fetch(`http://localhost:9999/topics`);
+  const topics = await resp.json();
+
+  return (
+    <html>
+      <body>
+        <ol>
+          {topics.map((topic: ITopics) => {
+            return (
+              <li key={topic.id}>
+                <Link href={`/read/${topic.id}`}>{topic.title}</Link>
+              </li>
+              ...
+```
