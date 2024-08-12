@@ -48,11 +48,13 @@ const deleteFn = () => {};
 ```tsx
 const deleteData = async () => {
   try {
-    const res = await axios.delete(`api/delete/${id}`).then((res) => console.log(res.data));
+    const res = await axios
+      .delete(`api/delete/${id}`)
+      .then((res) => console.log(res.data));
   } catch (err) {
-    console.error('error', err.message);
+    console.error("error", err.message);
   } finally {
-    console.log('어쨌든 실행되는 부분');
+    console.log("어쨌든 실행되는 부분");
   }
 };
 ```
@@ -63,13 +65,13 @@ const deleteData = async () => {
 // fn key 값 생략된 버전
 const deleteData = useMutation((id) => axios.delete(`api/delete/${id}`), {
   onSuccess: () => {
-    console.log('요청 성공');
+    console.log("요청 성공");
   },
   onError: () => {
-    console.error('에러 발생');
+    console.error("에러 발생");
   },
   onSettled: () => {
-    console.log('결과에 관계 없이 무언가 실행됨');
+    console.log("결과에 관계 없이 무언가 실행됨");
   },
 });
 
@@ -77,13 +79,25 @@ const deleteData = useMutation((id) => axios.delete(`api/delete/${id}`), {
 const deleteData = useMutation({
   mutationFn: (id) => axios.delete(`api/delete/${id}`),
   onSuccess: () => {
-    console.log('요청 성공');
+    console.log("요청 성공");
   },
   onError: () => {
-    console.error('에러 발생');
+    console.error("에러 발생");
   },
   onSettled: () => {
-    console.log('결과에 관계 없이 무언가 실행됨');
+    console.log("결과에 관계 없이 무언가 실행됨");
   },
 });
 ```
+
+### onSuccess의 특징
+
+```tsx
+onSuccess: (Reasponse, variable, context) => {
+    data...
+  },
+```
+
+- Reasponse: 서버 통신의 응답
+- mutate: 함수의 매계 변수
+- context: onMutate()의 return 값
