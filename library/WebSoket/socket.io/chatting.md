@@ -88,3 +88,66 @@ const MessageContainer = ({ messageList, user }) => {
 
 export default MessageContainer;
 ```
+
+### 채팅방 정보 받아오기
+
+```tsx
+const [rooms, setRooms] = useState([]);
+
+useEffect(() => {
+  socket.on('rooms', (res) => {
+    setRooms(res);
+  });
+}, []);
+```
+
+### 채팅방 정보 화면에 출력하기
+
+```tsx
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import './RoomListPageStyle.css';
+
+const RoomListPage = ({ rooms }) => {
+  const navigate = useNavigate();
+
+  const moveToChat = (rid) => {
+    navigate(`/room/${rid}`);
+  };
+
+  return (
+    <div className="room-body">
+      <div className="room-nav">채팅 ▼</div>
+
+      {rooms.length > 0
+        ? rooms.map((room) => (
+            <div key={room._id} onClick={() => moveToChat(room._id)}>
+              <div>
+                <img src="/profile.jpeg" alt="Profile" />
+                <p>{room.room}</p>
+              </div>
+              <div>{room.members.length}</div>
+            </div>
+          ))
+        : null}
+    </div>
+  );
+};
+
+export default RoomListPage;
+```
+
+### 채팅방 나가기
+
+```tsx
+const leaveRoom = () => {
+  socket.emit('leaveRoom', user, (res) => {
+    if (res.ok) navigate('/');
+  });
+};
+
+<nav>
+  <Button onClick={leaveRoom}>←</Button>
+  <div>{user.name}</div>
+</nav>;
+```
