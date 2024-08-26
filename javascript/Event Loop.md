@@ -69,21 +69,21 @@ setTimeout은 V8엔진에서는 존재하지 않고 Web APIs에서 제공해주�
 여기서 Evnet Loop가 동작한다. Evnet Loop의 역할은 Call Stack과 Task Queue를 주시하고
 만약 Call Stack이 비어있으면 첫 번째 callback을 stack에 쌓아서 실행할 수 있도록 해준다.
 
-> #### Task Queue의 종류
+#### Task Queue의 종류
 
-여기서 Task Queue는 MacroTask Queue, MicroTask Queue 2개의 공간이 있다.
-
-1. MacroTask Queue
-
-- setTimeout, setInterval, I/O, 이벤트 핸들러 등의 작업이 처리되는 공간
-
-2. MicroTask Queue
-
-- Promise, async/await, then, catch, finally 등의 작업이 처리되는 공간
-
-MicroTask Queue가 우선순위가 더 높아 Call Stack이 비어있을 때 MicroTask Queue가 먼저 callback이 처리된다.
-
-따라서 아래 코드를 실행하면?
+> 여기서 Task Queue는 MacroTask Queue, MicroTask Queue 2개의 공간이 있다.
+>
+> 1.  MacroTask Queue
+>
+> - setTimeout, setInterval, I/O, 이벤트 핸들러 등의 작업이 처리되는 공간
+>
+> 2.  MicroTask Queue
+>
+> - Promise, async/await, then, catch, finally 등의 작업이 처리되는 공간
+>
+> MicroTask Queue가 우선순위가 더 높아 Call Stack이 비어있을 때 MicroTask Queue가 먼저 callback이 처리된다.
+>
+> 따라서 아래 코드를 실행하면?
 
 ```tsx
 console.log('start');
@@ -99,4 +99,4 @@ Promise.resolve().then(() => {
 console.log('end');
 ```
 
-start ➡️ end➡️ promise➡️ timeout 순으로 출력된다.
+> start ➡️ end➡️ promise➡️ timeout 순으로 출력된다.
