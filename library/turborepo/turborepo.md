@@ -25,7 +25,7 @@ packages/ui/package.json라는 파일을 보면 package name이 “@repo/ui”�
 
 ### imports와 exports이해하기
 
-does와 webdml index.tsx를 보면 nextjs로 제작 되었으며 “@repo/ui” 라이브러리를 사용하는 것을 볼 수 있으며 둘다 `@repo/ui/button"`의 button을 불러오고 있다.
+does와 web의 index.tsx를 보면 nextjs로 제작 되었으며 “@repo/ui” 라이브러리를 사용하는 것을 볼 수 있으며 둘다 `@repo/ui/button"`의 button을 불러오고 있다.
 
 ```tsx
 import { Button } from "@repo/ui/button";
