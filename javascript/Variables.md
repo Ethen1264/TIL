@@ -155,3 +155,7 @@ const greeting = {
 ```tsx
 greeting.message = "say Hello instead";
 ```
+
+#### const의 호이스팅
+
+const의 호이스팅은 let의 호이스팅과 동일하다
