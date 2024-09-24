@@ -50,15 +50,17 @@ CSR(Client Side Rendering)은 클라이언트에서 렌더링 하는 방식이�
 ### CSR 코드
 
 ```tsx
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export default function getMovies() {
   const [isLoading, setIsLoading] = useState(true);
   const [movies, setMovies] = useState([]);
   const getMovies = async () => {
-    const response = await fetch('https://nomad-movies.nomadcoders.workers.dev/movies');
+    const response = await fetch(
+      "https://nomad-movies.nomadcoders.workers.dev/movies"
+    );
     const json = await response.json();
     setMovies(json);
     setIsLoading(false);
@@ -66,7 +68,7 @@ export default function getMovies() {
   useEffect(() => {
     getMovies();
   }, []);
-  return <div>{isLoading ? 'Loading...' : JSON.stringify(movies)}</div>;
+  return <div>{isLoading ? "Loading..." : JSON.stringify(movies)}</div>;
 }
 ```
 
@@ -76,13 +78,13 @@ CSR을 사용하면 리액트에서 사용용하는 metadata를 사용하지 못
 
 ```tsx
 export const metadata = {
-  title: 'Home',
+  title: "Home",
 };
 
-const URL = 'https://nomad-movies.nomadcoders.workers.dev/movies';
+const URL = "https://nomad-movies.nomadcoders.workers.dev/movies";
 async function getMovies() {
   await new Promise((resolve) => setTimeout(resolve, 5000));
-  console.log('im fetching');
+  console.log("im fetching");
   const response = await fetch(URL);
   const json = await response.json();
   return json;
@@ -95,3 +97,11 @@ export default async function HomePage() {
 ```
 
 위에 적은 CSR과 달리 metadata를 사용할 수 있다. 같은 창을 제랜더링 하더라도 로딩이 오래 걸리지 않는다. 다만 useState, useEffect를 사용하지 못한다. 사용하기 위해선 `'use client';`를 적어줘야한다.
+
+### CSR vs SSR
+
+CSR은 최초 화면을 유저에게 보여주기까지의 시간이 SSR보다 오래걸린다.
+
+> CSR이 무조건 오래 걸리는건 아닐 음 SSR의 경우 Server의 부하가 많아서 Working Time이 길어지면 오히려 사용자가 불편하다.
+> 또한 CSR은 React18 이후의 경우 Suspnese를 통해 스켈레톤과 같이 로딩 상태를 보여줄 수 있다.
+> 즉, CSR에서 번들링된 JS를 다운로드받고 JS를 실행시키는것 보다 SSR에서 Server의 Working 시간이 길어지면 SSR이 최초 화면을 유저에게 보여주기까지 더 오래걸릴수도 있다.
